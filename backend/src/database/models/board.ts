@@ -6,8 +6,8 @@ const Schema = mongoose.Schema;
 
 const boardSchema = new Schema({
     name: String,
-    users: [ User ],
-    tasks: [ Task ],
+    users: [ String ],
+    tasks: [ String ],
 });
 
 const Board = mongoose.model('Task', boardSchema);

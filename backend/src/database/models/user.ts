@@ -7,8 +7,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     name: String,
     email: String,
-    boards: [ Board ],
-    groups: [ Group ],
+    boards: [ String ],
+    groups: [ String ],
 });
 
 const User = mongoose.model('User', userSchema);

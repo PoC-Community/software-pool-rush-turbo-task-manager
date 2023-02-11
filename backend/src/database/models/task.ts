@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
     content: String,
-    assigned: [ User ],
+    assigned: [ String ],
 });
 
 const Task = mongoose.model('Task', taskSchema);
