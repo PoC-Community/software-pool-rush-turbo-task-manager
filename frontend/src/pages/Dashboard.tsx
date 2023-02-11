@@ -14,6 +14,7 @@ const Dashboard: FC = () => {
         <div>
             <Text>Dashboard</Text>
             {redirect}
+
         </div>
     );
 

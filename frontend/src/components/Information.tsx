@@ -15,7 +15,7 @@ import {Link} from "react-router-dom";
 function Information() {
     return (
         <Box w={'100%'} h={'100%'}>
-        <Stack align='stretch'>
+        <Stack direction={'row'}>
             <Box w={'45%'} padding={3} h={'100%'}>
                 <Heading>A simple to-do list maker that meets your team’s needs</Heading>
                 <Text>
