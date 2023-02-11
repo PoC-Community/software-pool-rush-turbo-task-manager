@@ -1,6 +1,6 @@
 import Response from './response'
 
-function checkBody(body: any, fields: string[], res: any) {
+function checkFields(body: any, fields: string[], res: any) {
     for (let index = 0; index < fields.length; index++) {
         const field = fields[index];
         if (!body.hasOwnProperty(field)){
@@ -16,4 +16,4 @@ function checkBody(body: any, fields: string[], res: any) {
     return true
 }
 
-export default checkBody
+export default checkFields

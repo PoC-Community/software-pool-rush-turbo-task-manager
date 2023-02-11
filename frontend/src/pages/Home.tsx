@@ -57,4 +57,7 @@ function Home() {
     );
 }
 
-export default Home;
+export {
+    Home,
+    Nav
+};

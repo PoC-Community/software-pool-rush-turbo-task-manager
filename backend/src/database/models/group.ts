@@ -7,6 +7,6 @@ const groupSchema = new Schema({
     boards: [ String ],
 });
 
-const Group = mongoose.model('Task', groupSchema);
+const Group = mongoose.model('Group', groupSchema);
 
 export default Group

@@ -1,10 +1,10 @@
 import SHA256 from 'crypto-js/sha256'
 import jwt from 'jsonwebtoken'
-import User from '../database/models/user'
-import creds from '../../creds.json'
+import User from '../../database/models/user'
+import creds from '../../../creds.json'
 
-import Response from '../utils/response'
-import checkBody from '../utils/checkBody'
+import Response from '../../utils/response'
+import checkFields from '../../utils/checkFields'
 
 async function checkUsernameTaken(username: string) {
     const user = await User.findOne({ name: username })
@@ -26,7 +26,7 @@ async function register(req: any, res: any) {
         data: null,
     }
 
-    const bodyIsValid = checkBody(body, ['name', 'email', 'password'], res)
+    const bodyIsValid = checkFields(body, ['name', 'email', 'password'], res)
     if (!bodyIsValid)
         return
 
