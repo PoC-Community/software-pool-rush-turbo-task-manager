@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const groupSchema = new Schema({
     name: String,
-    boards: [ Board ],
+    boards: [ String ],
 });
 
 const Group = mongoose.model('Task', groupSchema);
