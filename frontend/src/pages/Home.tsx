@@ -9,6 +9,7 @@ import {
     Heading,
 } from '@chakra-ui/react';
 import {Link} from "react-router-dom";
+import Information from "../components/Information";
 
 function Nav() {
     const {toggleColorMode} = useColorMode();
@@ -38,15 +39,21 @@ function Nav() {
 }
 function Home() {
     return (
-        <div>
+        <Box>
             <Nav></Nav>
-            <Center>
                 <Stack align='stretch'>
-                    <Heading>Turbo Task Manager</Heading>
-                    <Box justify-content={'align'}>Manage your turbo tasks</Box>
+                    <Center>
+                    <Heading
+                        bgGradient='linear(to-l, #A0AEC0, #4A5568)'
+                        bgClip='text'
+                        fontSize='7xl'
+                        fontWeight='extrabold'>
+                        Turbo Task Manager
+                    </Heading>
+                    </Center>
                 </Stack>
-            </Center>
-        </div>
+                <Information></Information>
+        </Box>
     );
 }
 
