@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import {
     Box,
     Flex,
-    Link,
     Button,
     useColorModeValue,
     Stack,
@@ -10,11 +9,13 @@ import {
     Center,
     Heading,
 } from '@chakra-ui/react';
+import {Link} from "react-router-dom";
 
-const NavLink = ({ children }: { children: ReactNode }) => (
+
+/*const NavLink = ({ children }: { children: ReactNode }) => (
     <Link
         px={2}
-        py={1}
+        //py={1}
         rounded={'md'}
         _hover={{
             textDecoration: 'none',
@@ -23,7 +24,8 @@ const NavLink = ({ children }: { children: ReactNode }) => (
         href={'#'}>
         {children}
     </Link>
-);
+
+);*/
 
 function Nav() {
     const {toggleColorMode} = useColorMode();
@@ -31,15 +33,15 @@ function Nav() {
         <>
             <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
                 <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-                    <Box>Turbo Task Manager</Box>
+                    <Box><Link to={"/"}>Turbo Task Manager</Link></Box>
 
                     <Flex alignItems={'center'}>
                         <Stack direction={'row'} spacing={7}>
                             <Button>
-                                Login
+                                <Link to={"/login"}>Login</Link>
                             </Button>
                             <Button>
-                                Register
+                                <Link to={"/register"}>Register</Link>
                             </Button>
                             <Button onClick={toggleColorMode}>
                                 Dark Mode
