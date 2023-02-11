@@ -2,7 +2,7 @@ import {FC, useState} from "react";
 import {Box, Button, Center, FormControl, FormLabel, Input, Text, VStack} from "@chakra-ui/react";
 import {Link, Navigate} from "react-router-dom";
 import {register} from "../service/users.service";
-import {Nav} from "./Home";
+import Nav from "../components/Navigation/NavBar";
 import {getToken} from "../service/token";
 
 
