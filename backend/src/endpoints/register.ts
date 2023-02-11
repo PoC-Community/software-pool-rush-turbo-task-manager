@@ -33,16 +33,19 @@ function register(req, res) {
         return res.send('no email given')
 
         
-    if (!usernameTaken(body.name) && !emailTaken(body.email))
-    var user = new User()
-    user.name = body.name
-    user.email = body.email
-    user.save(error => {
-        if (error)
-            res.json(error)
-        else
-            res.send('user created successfully')
-    });
+    if (!usernameTaken(body.name) && !emailTaken(body.email)) {
+        var user = new User()
+        user.name = body.name
+        user.email = body.email
+        user.save(error => {
+            if (error)
+                res.json(error)
+            else
+                res.send('user created successfully')
+        });
+    } else {
+        res.send('name or email taken')
+    }
 }
 
 export default register
