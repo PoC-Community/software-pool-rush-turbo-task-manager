@@ -1,9 +1,8 @@
 import mongoose from 'mongoose'
-
-const uri = "mongodb+srv://root:0y4oCYRAb5wdEh7R@cluster0.ocpjfwg.mongodb.net/?retryWrites=true&w=majority";
+import creds from '../../creds.json'
 
 async function connectToDatabase() {
-    await mongoose.connect(uri);
+    await mongoose.connect(creds.database_uri);
 }
 
 export default connectToDatabase

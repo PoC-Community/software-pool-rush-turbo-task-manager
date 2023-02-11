@@ -1,0 +1,4 @@
+{
+    "database_uri": "mongodb+srv://root:0y4oCYRAb5wdEh7R@cluster0.ocpjfwg.mongodb.net/?retryWrites=true&w=majority",
+    "secret_key": "coucoulesgensjesuisunpoisson"
+}
