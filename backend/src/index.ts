@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import connectToDatabase from './database'
 
 import home from './endpoints/home'
@@ -8,6 +9,7 @@ import login from './endpoints/login'
 const app = express()
 const port = 4000
 
+app.use(cors())
 app.use(express.json());
 connectToDatabase()
 

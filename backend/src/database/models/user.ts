@@ -1,6 +1,4 @@
 import mongoose from 'mongoose'
-import Board from './board'
-import Group from './group'
 
 const Schema = mongoose.Schema;
 
