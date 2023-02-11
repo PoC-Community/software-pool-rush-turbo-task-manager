@@ -1,18 +1,28 @@
 import {FC, useState} from "react";
 import {Box, Button, Center, FormControl, FormLabel, Input, Text, VStack} from "@chakra-ui/react";
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
+import {Nav} from "./Home";
+import {login} from "../service/users.service";
+import {getToken} from "../service/token";
 
 const Login: FC = () => {
-    const [email, setEmail] = useState<string>();
-    const [password, setPassword] = useState<string>();
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    let redirect;
 
-    const logInformations = () => {
-        console.log("email : " + email)
-        console.log("password : " + password)
+    if (getToken() != null)
+        redirect = <Navigate to="/Dashboard"/>
+
+    const callLogin = async () => {
+        // @ts-ignore
+        let connected:boolean = await login(email, password)
+        if (connected || getToken() != null)
+            redirect = <Navigate to="/Dashboard"/>
     }
 
     return (
         <Box w="100%">
+            <Nav/>
             <Center mt="160px">
                 <VStack spacing="32px">
                     <FormControl>
@@ -26,18 +36,17 @@ const Login: FC = () => {
                                value={password}/>
                     </FormControl>
                     <Link to="/dashboard">
-                        <Button width="full" mt={4} type="submit" onClick={logInformations}>
-                            <button id="loginPage-login-button">Sign In</button>
+                        <Button width="full" mt={4} type="submit" onClick={callLogin}>
+                            Sign In
                         </Button>
                     </Link>
-                    <Link to="/register">
-                        <button id="loginPage-register-button">Don't have an account ?</button>
-                    </Link>
+                    <button id="loginPage-register-button">Don't have an account ?</button>
                     <Link to="/">
                         <button id="loginPage-home-button"><Text fontSize="xs">Return to Home</Text></button>
                     </Link>
                 </VStack>
             </Center>
+            {redirect}
         </Box>
     )
 };
