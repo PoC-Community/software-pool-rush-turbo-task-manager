@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ChakraProvider } from '@chakra-ui/react';
+import 'react-notifications/lib/notifications.css';
 
 import App from './app/App';
 import theme from './theme';

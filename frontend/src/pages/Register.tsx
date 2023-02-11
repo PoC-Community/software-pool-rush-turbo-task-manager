@@ -1,22 +1,38 @@
 import {FC, useState} from "react";
 import {Box, Button, Center, FormControl, FormLabel, Input, Text, VStack} from "@chakra-ui/react";
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
+import {register} from "../service/users.service";
+import {Nav} from "./Home";
+import {getToken} from "../service/token";
+
 
 const Register: FC = () => {
-    const [email, setEmail] = useState<string>();
-    const [password, setPassword] = useState<string>();
-    const [passwordConfirmation, setPasswordConfirmation] = useState<string>();
+    const [name, setName] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [passwordConfirmation, setPasswordConfirmation] = useState<string>("");
+    let redirect;
 
-    const logInformations = () => {
-        console.log("email : " + email)
-        console.log("password : " + password)
-        console.log("passwordConfirmation : " + passwordConfirmation)
+    if (getToken() != null)
+        redirect = <Navigate to="/Dashboard"/>
+
+    const callRegister = async () => {
+        // @ts-ignore
+        let connected:boolean = await register(name, email, password, passwordConfirmation)
+        if (connected || getToken() != null)
+            redirect = <Navigate to="/Dashboard"/>
     }
 
     return (
         <Box w="100%">
+            <Nav/>
             <Center mt="160px">
                 <VStack spacing="32px">
+                    <FormControl>
+                        <FormLabel>Name</FormLabel>
+                        <Input type="email" placeholder="Martin" onChange={(e) => setName(e.target.value)}
+                               value={name}/>
+                    </FormControl>
                     <FormControl>
                         <FormLabel>Email</FormLabel>
                         <Input type="email" placeholder="test@test.com" onChange={(e) => setEmail(e.target.value)}
@@ -32,11 +48,9 @@ const Register: FC = () => {
                         <Input type="password" placeholder="*******"
                                onChange={(e) => setPasswordConfirmation(e.target.value)} value={passwordConfirmation}/>
                     </FormControl>
-                    <Link to="/dashboard">
-                        <Button width="full" mt={4} type="submit" onClick={logInformations}>
-                            <button id="registerPage-register-button">Register</button>
-                        </Button>
-                    </Link>
+                    <Button width="full" mt={4} type="submit" onClick={callRegister}>
+                        Register
+                    </Button>
                     <Link to="/login">
                         <button id="registerPage-login-button">Already have an account ?</button>
                     </Link>
@@ -45,6 +59,7 @@ const Register: FC = () => {
                     </Link>
                 </VStack>
             </Center>
+            {redirect}
         </Box>
     );
 }
