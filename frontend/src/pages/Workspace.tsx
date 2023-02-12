@@ -1,14 +1,14 @@
 import {FC} from "react";
 import Nav from "../components/Navigation/NavBar";
-import {Box, Text, Center, Flex} from "@chakra-ui/react";
-
+import {Box, Center, Flex, Text} from "@chakra-ui/react";
 
 import {getToken} from "../service/token";
-import {Navigate} from "react-router-dom";
+import {Navigate, useParams} from "react-router-dom";
 import SideBarDashboard from "../components/Navigation/SideBarDashboard";
-import DashboardGroupsBoards from "../components/MainPartPage/DashboardGroupsBoards";
+import BoardsGroups from "../components/MainPartPage/GroupManager";
+import GroupManager from "../components/MainPartPage/GroupManager";
 
-const Dashboard: FC = () => {
+const Workspace: FC = () => {
     let redirect;
 
     if (getToken() == null || getToken() === "undefined")
@@ -20,7 +20,7 @@ const Dashboard: FC = () => {
             <Center>
                 <Flex w="60%">
                     <SideBarDashboard/>
-                    <DashboardGroupsBoards/>
+                    <GroupManager/>
                 </Flex>
             </Center>
             {redirect}
@@ -28,4 +28,4 @@ const Dashboard: FC = () => {
     );
 }
 
-export default Dashboard;
+export default Workspace;

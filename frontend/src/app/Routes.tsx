@@ -3,6 +3,8 @@ import Home from '../pages/Home';
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
+import Board from "../pages/Board";
+import Workspace from "../pages/Workspace";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
     {
         path: "/dashboard",
         element: <Dashboard/>
+    },
+    {
+        path: "/board/:group",
+        element: <Workspace/>
+    },
+    {
+        path: "/board/:group/:board",
+        element: <Board/>
     }
 ]);
 

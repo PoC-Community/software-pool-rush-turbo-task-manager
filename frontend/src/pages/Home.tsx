@@ -4,7 +4,7 @@ import {
     Center,
     Heading,
 } from '@chakra-ui/react';
-import Information from "../components/Home/Information";
+import Information from "../components/MainPartPage/Information";
 import Nav from "../components/Navigation/NavBar";
 
 export default function Home() {
