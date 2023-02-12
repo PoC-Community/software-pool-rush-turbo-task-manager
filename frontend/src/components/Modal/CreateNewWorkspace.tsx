@@ -8,7 +8,7 @@ import {
     ModalHeader,
     ModalOverlay
 } from "@chakra-ui/react";
-import {FC, useState} from "react";
+import {useState} from "react";
 
 export default  function CreateNewWorkspace({ show, handleClick }: {show: boolean, handleClick: any}) {
     const [name, setName] = useState<string>("");
