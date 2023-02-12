@@ -8,8 +8,10 @@ import {
     ModalHeader,
     ModalOverlay
 } from "@chakra-ui/react";
+import {FC, useState} from "react";
 
 export default  function CreateNewWorkspace({ show, handleClick }: {show: boolean, handleClick: any}) {
+    const [name, setName] = useState<string>("");
     const onClose = () => {
         show = false
     }
@@ -26,7 +28,7 @@ export default  function CreateNewWorkspace({ show, handleClick }: {show: boolea
                 <ModalBody pb={6}>
                     <FormControl my="1">
                         <FormLabel>Name</FormLabel>
-                        <Input placeholder='Name'/>
+                        <Input placeholder='Name' onChange={(e) => setName(e.target.value)} value={name}/>
                     </FormControl>
                 </ModalBody>
                 <ModalFooter>
