@@ -12,8 +12,8 @@ export default function NavBar() {
         </div>
     } else {
         sideInfos = <div>
-            <Button><Link to={"/login"}>Login</Link></Button>
-            <Button><Link to={"/register"}>Register</Link></Button>
+            <Button mx="2"><Link to={"/login"}>Login</Link></Button>
+            <Button mx="2"><Link to={"/register"}>Register</Link></Button>
         </div>
     }
 
