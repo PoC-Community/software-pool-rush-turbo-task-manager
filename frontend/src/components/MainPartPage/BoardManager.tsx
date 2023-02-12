@@ -12,13 +12,15 @@ import {
     TableContainer,
     Tr,
     Td,
-    Button
+    Button, ButtonGroup
 } from "@chakra-ui/react";
 import { DeleteIcon, ViewIcon } from '@chakra-ui/icons'
 import {Link, useParams} from "react-router-dom";
 import LinkToDashboard from "../Navigation/LinkToDashboard";
 import ButtonModalCreateTask from "../Button/ButtonModalCreateTask";
 import ButtonModalModifyTask from "../Button/ButtonModalModifyTask";
+import ButtonModalDetail from "../Button/ButtonModalDetail";
+import {text} from "stream/consumers";
 const BoardManager: FC = () => {
     const { group, board }= useParams();
     let data = {name: "First Board", people: ["Thierry", "Marc"], tasks: [{content: "blablabla", assign_to: "Thierry"}, {content: "Je suis allé au marché l'autre jour", assign_to: "Thierry"}, {content: "blobloblo", assign_to: "Marc"}, {content: "bliblibli", assign_to: "Marc"}]};
@@ -32,7 +34,14 @@ const BoardManager: FC = () => {
     let listBoards = data.tasks.map((task, i) => {
         let cutContent = task.content.substring(0, 20);
         cutContent += "..."
-        return (<Tr><Td>{cutContent}</Td><Td>{task.assign_to}</Td><Td><Button><ViewIcon/></Button></Td><Td><ButtonModalModifyTask/></Td><Td><Button><DeleteIcon/></Button></Td></Tr>);
+        return (
+            <Tr>
+                <Td>{cutContent}</Td>
+                <Td>{task.assign_to}</Td>
+                <Td><ButtonModalDetail/></Td>
+                <Td><ButtonModalModifyTask/></Td>
+                <Td><Button><DeleteIcon/></Button></Td>
+            </Tr>);
     });
 
     // @ts-ignore
@@ -52,7 +61,7 @@ const BoardManager: FC = () => {
                             <Th>Content</Th>
                             <Th>Assign To</Th>
                             <Th>Details</Th>
-                            <Th>Model</Th>
+                            <Th>Modify</Th>
                             <Th>Delete</Th>
                         </Tr>
                     </Thead>
